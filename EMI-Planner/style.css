@@ -1,0 +1,147 @@
+/* Simple styles for the EMI planner */
+:root {
+  --navy: #173a6a;
+  --blue: #2a78d6;
+  --orange: #eb6834;
+  --green: #0a7d24;
+  --amber: #8a5a00;
+  --red: #b42323;
+  --bg: #f2f5f9;
+  --card: #ffffff;
+  --soft: #f5f7fa;
+  --text: #16212e;
+  --muted: #5b6878;
+  --line: #dde3ea;
+}
+
+* { box-sizing: border-box; }
+[hidden] { display: none !important; }
+
+body {
+  margin: 0;
+  font-family: "Segoe UI", Arial, sans-serif;
+  font-size: 16px;
+  line-height: 1.5;
+  color: var(--text);
+  background: var(--bg);
+}
+
+header {
+  background: var(--navy);
+  color: #ffffff;
+  text-align: center;
+  padding: 26px 16px;
+}
+header h1 { margin: 0 0 6px; font-size: 28px; }
+header p { margin: 0; color: #dce6f4; }
+
+/* Two cards side by side; the table card uses the full width */
+main {
+  max-width: 1140px;
+  margin: 20px auto;
+  padding: 0 16px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 18px;
+}
+.card {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 20px;
+  min-width: 0;
+}
+.card.full { grid-column: 1 / -1; }
+
+h2 { margin: 0 0 14px; font-size: 20px; }
+
+/* Inputs */
+.grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px 16px; }
+.grid .wide { grid-column: 1 / -1; }
+label { display: block; font-weight: 600; font-size: 14px; }
+input {
+  display: block; width: 100%;
+  margin-top: 6px; padding: 10px 12px;
+  font-family: inherit; font-size: 16px; color: var(--text);
+  background: var(--soft);
+  border: 1px solid var(--line); border-radius: 8px;
+}
+input:focus { outline: 2px solid var(--blue); border-color: transparent; }
+small { display: block; margin-top: 5px; font-weight: 400; font-size: 13px; color: var(--muted); line-height: 1.4; }
+.optional { font-weight: 400; font-size: 13px; color: var(--muted); }
+
+.btn {
+  margin-top: 18px; padding: 12px 34px;
+  font-family: inherit; font-size: 16px; font-weight: 700;
+  color: #ffffff; background: var(--navy);
+  border: 0; border-radius: 8px; cursor: pointer;
+}
+.btn:hover { background: #0f2c54; }
+.btn-light {
+  margin-top: 12px; padding: 8px 18px;
+  font-family: inherit; font-size: 14px; font-weight: 600;
+  color: var(--navy); background: #ffffff;
+  border: 1px solid #b9c8dd; border-radius: 8px; cursor: pointer;
+}
+.btn-light:hover { background: var(--soft); }
+
+/* Your EMI */
+.box { background: var(--soft); border-radius: 10px; padding: 14px 10px; text-align: center; }
+.box span { display: block; font-size: 14px; color: var(--muted); }
+.box strong { display: block; font-size: 22px; }
+.box.main { background: #e3ecf9; margin-bottom: 10px; padding: 18px 10px; }
+.box.main strong { font-size: 34px; color: var(--navy); line-height: 1.2; }
+.results { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+
+.bar { display: flex; gap: 2px; height: 16px; margin-top: 18px; border-radius: 8px; overflow: hidden; }
+.bar-loan { background: var(--blue); }
+.bar-int { background: var(--orange); }
+.legend { margin: 8px 0 0; font-size: 14px; color: var(--muted); }
+.legend b { color: var(--text); margin-right: 18px; }
+.dot { display: inline-block; width: 10px; height: 10px; border-radius: 3px; margin-right: 6px; }
+.dot.loan { background: var(--blue); }
+.dot.int { background: var(--orange); }
+.small { margin: 0; font-size: 14px; color: var(--muted); }
+
+/* Can you afford it? */
+.result-line { font-size: 18px; margin: 0 0 8px; }
+.status { display: inline-block; padding: 3px 12px; border-radius: 999px; font-size: 14px; font-weight: 700; margin-left: 6px; }
+.status.safe { background: #e5f4e8; color: var(--green); }
+.status.careful { background: #fdf2d8; color: var(--amber); }
+.status.risky { background: #fbe5e5; color: var(--red); }
+.meter { position: relative; height: 14px; margin: 14px 0 26px; background: var(--soft); border: 1px solid var(--line); border-radius: 7px; }
+.meter-fill { position: absolute; left: 0; top: 0; bottom: 0; border-radius: 7px; background: var(--blue); }
+.meter-mark { position: absolute; top: -5px; bottom: -5px; width: 2px; background: var(--muted); }
+.meter-mark span { position: absolute; top: 100%; left: 50%; transform: translateX(-50%); font-size: 12px; color: var(--muted); }
+.facts { display: grid; gap: 8px; }
+.fact { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; padding: 10px 12px; background: var(--soft); border-radius: 8px; }
+.fact span { font-size: 14px; color: var(--muted); }
+.fact b { font-size: 17px; white-space: nowrap; }
+
+/* Save with extra payments */
+.saving { padding: 12px 14px; border-radius: 8px; background: #e5f4e8; color: var(--green); font-weight: 700; font-size: 16px; margin: 0 0 12px; }
+.compare { width: 100%; border-collapse: collapse; font-size: 15px; }
+.compare th, .compare td { padding: 9px 8px; border-bottom: 1px solid var(--line); text-align: right; }
+.compare th:first-child, .compare td:first-child { text-align: left; }
+.compare th { background: var(--soft); font-size: 13.5px; }
+
+/* Year-by-year table */
+.table-wrap { overflow-x: auto; margin-top: 10px; border: 1px solid var(--line); border-radius: 10px; }
+#yearTable { width: 100%; border-collapse: collapse; font-size: 15px; }
+#yearTable th, #yearTable td { padding: 9px 14px; text-align: right; white-space: nowrap; }
+#yearTable th { background: var(--soft); font-size: 14px; }
+#yearTable td { border-top: 1px solid var(--line); }
+#yearTable th:first-child, #yearTable td:first-child { text-align: left; }
+#yearTable td.int { color: var(--orange); }
+#yearTable td.paid { color: var(--blue); }
+
+footer { text-align: center; font-size: 13px; color: var(--muted); padding: 6px 16px 30px; }
+
+/* Tablets and phones: one card per row */
+@media (max-width: 820px) {
+  main { grid-template-columns: 1fr; }
+}
+@media (max-width: 480px) {
+  .grid, .results { grid-template-columns: 1fr; }
+  header h1 { font-size: 23px; }
+}
