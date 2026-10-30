@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Smart EMI &amp; Loan Repayment Planner</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <header>
+    <h1>Smart EMI &amp; Loan Repayment Planner</h1>
+    <p>Calculate your EMI, check affordability and plan your repayment.</p>
+  </header>
+
+  <main>
+
+    <!-- Row 1: inputs | EMI -->
+    <section class="card" id="sec-input">
+      <h2>Enter your loan details</h2>
+      <form id="loanForm" novalidate>
+        <div class="grid">
+          <label>Loan amount (₹)
+            <input id="amount" type="number" value="5000000" min="1000" step="10000">
+            <small id="amountWords"></small>
+          </label>
+          <label>Interest rate (% per year)
+            <input id="rate" type="number" value="8.5" min="0" max="50" step="0.1">
+          </label>
+          <label>Loan tenure (years)
+            <input id="years" type="number" value="20" min="1" max="40" step="1">
+          </label>
+          <label>Monthly salary, after tax (₹)
+            <input id="salary" type="number" value="120000" min="0" step="1000">
+          </label>
+          <label class="wide">Extra payment every year (₹) <span class="optional">optional</span>
+            <input id="extra" type="number" value="100000" min="0" step="10000">
+            <small>Any extra amount you can pay once a year, such as a bonus. It goes straight to reducing your loan, so you pay less interest and finish earlier. Enter 0 if you don't plan to pay extra.</small>
+          </label>
+        </div>
+        <button type="submit" class="btn">Calculate</button>
+      </form>
+    </section>
+
+    <section class="card" id="sec-emi">
+      <h2>Your EMI</h2>
+      <div class="box main"><span>Monthly EMI</span><strong id="emi"></strong><small id="emiFor"></small></div>
+      <div class="results">
+        <div class="box"><span>Total interest</span><strong id="interest"></strong></div>
+        <div class="box"><span>Total amount you pay</span><strong id="total"></strong></div>
+      </div>
+      <div class="bar"><span class="bar-loan" id="barLoan"></span><span class="bar-int" id="barInt"></span></div>
+      <p class="legend"><span class="dot loan"></span>Loan amount <b id="loanShare"></b> <span class="dot int"></span>Interest <b id="intShare"></b></p>
+    </section>
+
+    <!-- Row 2: affordability | extra payments -->
+    <section class="card" id="sec-afford">
+      <h2>Can you afford it?</h2>
+      <div id="affordResult"></div>
+    </section>
+
+    <section class="card" id="sec-extra">
+      <h2>Save with extra payments</h2>
+      <div id="extraResult"></div>
+    </section>
+
+    <!-- Row 3: full width -->
+    <section class="card full" id="sec-table">
+      <h2>Year-by-year repayment</h2>
+      <p class="small" id="tableNote"></p>
+      <div class="table-wrap"><table id="yearTable"></table></div>
+      <button type="button" class="btn-light" id="moreBtn" hidden></button>
+    </section>
+
+  </main>
+
+  <footer>For learning only (Financial Literacy and Banking project). Real bank figures can differ slightly.</footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
